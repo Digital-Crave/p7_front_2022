@@ -1,0 +1,121 @@
+/* Login page */
+.identification-box {
+  background-color: #ffd7d7;
+}
+  body {
+    font-family: "poppinsregular" !important;
+  }
+  .container {
+    margin-top: -6rem;
+  }
+  .icon-name {
+    margin-top: 6rem;
+  }
+  img {
+    width: auto !important;
+    height: auto !important;
+  }
+  h1 {
+    font-size: 1.8em !important;
+    color: black !important;
+  }
+  h2 {
+    font-size: 1.5em !important;
+    text-align: center;
+  }
+  label {
+    display: flex !important;
+    justify-content: center;
+  }
+  .card-body {
+    border: 10px solid #ffd7d7;
+    box-shadow: 1px 1px 9px 1px #ffd7d7;
+  }
+  .submit-button {
+    background-color: #0d6efd !important;
+    border-color: #0d6efd !important;
+    padding: 0.5rem 2rem 0.5rem 2rem !important;
+  }
+  .btn-secondary:hover {
+    background-color: #0b5ed7 !important;
+  }
+  .btn-secondary:active {
+    box-shadow: none !important;
+  }
+  .btn-secondary:focus {
+    box-shadow: none !important;
+  }
+  .error-message {
+    color: #fd2d01;
+  }
+  .input {
+    width: 20em;
+  }
+  .input:hover {
+    outline: none !important;
+    border: solid 1px #ffd7d7;
+    box-shadow: 0 0 10px #ffd7d7;
+  }
+  .form-control {
+    border: solid 1px #ffd7d7 !important;
+    box-shadow: 1px 1px 1px 0px #ffd7d7;
+  }
+  .form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #ffd7d7 !important;
+    outline: 0;
+    box-shadow: none !important;
+  }
+  .switch-page {
+    line-height: 50px;
+  }
+  @media screen and (max-width: 970px) {
+    img {
+      width: 100% !important;
+      height: auto !important;
+    }
+    h1 {
+      font-size: 1.2em;
+    }
+    h2 {
+      font-size: 1.3em;
+    }
+    .input {
+      width: 18em;
+    }
+  }
+  @media screen and (max-width: 560px) {
+    img {
+      width: 100% !important;
+      height: auto !important;
+    }
+    h1 {
+      display: 1em;
+    }
+    h2 {
+      font-size: 1.2em;
+    }
+    .input {
+      width: 17em;
+    }
+    .switch-page {
+      line-height: 30px;
+    }
+  }
+  @media screen and (max-width: 440px) {
+    h1 {
+      display: none;
+    }
+    .input {
+      width: 15em;
+    }
+  }
+
+  @font-face {
+    font-family: "poppinsregular";
+    src: url("../assets/fonts/poppins-regular-webfont.woff2") format("woff2"),
+      url("../assets/fonts/poppins-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }

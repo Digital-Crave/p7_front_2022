@@ -1,0 +1,69 @@
+/*signup page */
+#signup{
+.identification-box {
+  background-color: white;
+}
+.submit-button:hover {
+  background: #ffb3b3;
+}
+h1 {
+  font-size: 1.5em;
+}
+h2 {
+  font-size: 1.4em;
+}
+.icon-name {
+  height: 300px !important;
+  margin-top: 4rem;
+}
+.error-message {
+  color: #fd2d01;
+}
+.input {
+  width: 100%;
+}
+.input:hover {
+  outline: none !important;
+  border: solid 1px #fd2d01;
+  box-shadow: 0 0 10px #ffd7d7;
+}
+.switch-page {
+  line-height: 50px;
+}
+@media screen and (max-width: 870px) {
+  .icon-name {
+    height: 200px;
+  }
+  h1 {
+    font-size: 1.2em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  .input {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 560px) {
+  .icon-name {
+    height: 150px;
+  }
+  h1 {
+    display: 1em;
+  }
+  h2 {
+    font-size: 1.2em;
+  }
+  .input {
+    width: 100%;
+  }
+  .switch-page {
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .input {
+    width: 100%;
+  }
+}
+}

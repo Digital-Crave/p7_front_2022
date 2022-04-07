@@ -1,0 +1,80 @@
+/*signup page */
+#signup .identification-box {
+  background-color: white;
+}
+
+#signup .submit-button:hover {
+  background: #ffb3b3;
+}
+
+#signup h1 {
+  font-size: 1.5em;
+}
+
+#signup h2 {
+  font-size: 1.4em;
+}
+
+#signup .icon-name {
+  height: 300px !important;
+  margin-top: 4rem;
+}
+
+#signup .error-message {
+  color: #fd2d01;
+}
+
+#signup .input {
+  width: 100%;
+}
+
+#signup .input:hover {
+  outline: none !important;
+  border: solid 1px #fd2d01;
+  -webkit-box-shadow: 0 0 10px #ffd7d7;
+          box-shadow: 0 0 10px #ffd7d7;
+}
+
+#signup .switch-page {
+  line-height: 50px;
+}
+
+@media screen and (max-width: 870px) {
+  #signup .icon-name {
+    height: 200px;
+  }
+  #signup h1 {
+    font-size: 1.2em;
+  }
+  #signup h2 {
+    font-size: 1.3em;
+  }
+  #signup .input {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #signup .icon-name {
+    height: 150px;
+  }
+  #signup h1 {
+    display: 1em;
+  }
+  #signup h2 {
+    font-size: 1.2em;
+  }
+  #signup .input {
+    width: 100%;
+  }
+  #signup .switch-page {
+    line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  #signup .input {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=signup.css.map */
