@@ -1,7 +1,5 @@
 <script>
 
-import axios from "axios"
-
 export default {
   name: 'login',
   data() {
@@ -15,13 +13,45 @@ export default {
   },
   methods: {
     login() {
-      axios.post('/api/login', this.form)
-        .then(response => {
-          this.$router.push('/')
+      let data = {
+        email: this.email,
+        password: this.password
+      };
+      const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/; 
+      const regexPassword = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{3,50}$/;
+      if (this.email === "") {
+        sweetalert("Veuillez remplir votre adresse email");
+      } else if (regexEmail.test(this.email) === false) {
+        alert("Veuillez écrire une adresse email valide");}
+      if (this.password === "") {
+        alert("Veuillez remplir votre mot de passe");
+      } else if (regexPassword.test(this.password) === false) {
+        alert("Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule ainsi qu'un chiffre");
+      }else if ((regexEmail.test(this.email) === true) && regexPassword.test(this.password) === true ) {
+        fetch("http://localhost:3001/api/auth/login", {
+          method: "POST",
+          headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        .then(async response => {
+          if(response.ok) {
+            return response.json()
+          } else {
+            const text = await response.text();
+          throw new Error(text);
+          }
+        })
+        .then(data => {
+          localStorage.setItem('token', data.token);
+          this.$router.push('/home');
         })
         .catch(error => {
-          this.errors = error.response.data.errors
-        })
+          this.errors = error.response.data.errors;
+        });
+    }
     }
   }
 }
