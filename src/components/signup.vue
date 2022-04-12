@@ -14,34 +14,40 @@ export default {
         passwordRegex: /^(?=.*[a-z])(?=.*\d)(?=.{8,})/,
     };
 },
+
 methods: {
   signup() {
     let data = {
       name: this.name,
       firstname: this.firstname,
       email: this.email,
-      password: this.password,
+      password: this.password
     };
+    
     if (this.name === "") {
       this.error = "Veuillez remplir votre nom";
     } else if (this.pseudoRegex.test(this.name) === false) {
       this.error = "Veuillez écrire un nom valide";
     }
+
     if (this.firstname === "") {
       this.error = "Veuillez remplir votre prénom";
     } else if (this.pseudoRegex.test(this.firstname) === false) {
       this.error = "Veuillez écrire un prénom valide";
     }
+
     if (this.email === "") {
       this.error = "Veuillez remplir votre adresse email";
     } else if (this.emailRegex.test(this.email) === false) {
       this.error = "Veuillez écrire une adresse email valide";
     }
+
     if (this.password === "") {
       this.error = "Veuillez remplir votre mot de passe";
     } else if (this.passwordRegex.test(this.password) === false) {
       this.error = "Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule ainsi qu'un chiffre";
-    }else if ((this.pseudoRegex.test(this.name) === true) && (this.pseudoRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
+
+    } else if ((this.pseudoRegex.test(this.name) === true) && (this.pseudoRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
           fetch("http://localhost:3001/api/auth/signup", {
           method: "POST",
           headers: {
