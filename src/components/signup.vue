@@ -4,85 +4,76 @@ export default {
   name: 'Signup',
   data() {
     return {
-        name: '',
-        firstname: '',
-        email: '',
-        password: '',
-        error: "",
-        pseudoRegex:  /^[a-zA-Z-\s]+$/,
-        emailRegex: (/^[A-Za-z0-9+_.-]+@(.+)$/),
-        passwordRegex: /^(?=.*[a-z])(?=.*\d)(?=.{8,})/,
+      name: '',
+      firstname: '',
+      email: '',
+      password: '',
+      error: "",
+      pseudoRegex: /^[a-zA-Z-\s]+$/,
+      emailRegex: (/^[A-Za-z0-9+_.-]+@(.+)$/),
+      passwordRegex: /^(?=.*[a-z])(?=.*\d)(?=.{8,})/,
     };
-},
+  },
 
-methods: {
-  signup() {
-    let data = {
-      name: this.name,
-      firstname: this.firstname,
-      email: this.email,
-      password: this.password
-    };
-    
-    if (this.name === "") {
-      this.error = "Veuillez remplir votre nom";
-    } else if (this.pseudoRegex.test(this.name) === false) {
-      this.error = "Veuillez écrire un nom valide";
-    }
+  methods: {
+    signup() {
+      let data = {
+        name: this.name,
+        firstname: this.firstname,
+        email: this.email,
+        password: this.password
+      };
 
-    if (this.firstname === "") {
-      this.error = "Veuillez remplir votre prénom";
-    } else if (this.pseudoRegex.test(this.firstname) === false) {
-      this.error = "Veuillez écrire un prénom valide";
-    }
+      if (this.name === "") {
+        this.error = "Veuillez remplir votre nom";
+      } else if (this.pseudoRegex.test(this.name) === false) {
+        this.error = "Veuillez écrire un nom valide";
+      }
 
-    if (this.email === "") {
-      this.error = "Veuillez remplir votre adresse email";
-    } else if (this.emailRegex.test(this.email) === false) {
-      this.error = "Veuillez écrire une adresse email valide";
-    }
+      if (this.firstname === "") {
+        this.error = "Veuillez remplir votre prénom";
+      } else if (this.pseudoRegex.test(this.firstname) === false) {
+        this.error = "Veuillez écrire un prénom valide";
+      }
 
-    if (this.password === "") {
-      this.error = "Veuillez remplir votre mot de passe";
-    } else if (this.passwordRegex.test(this.password) === false) {
-      this.error = "Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule ainsi qu'un chiffre";
+      if (this.email === "") {
+        this.error = "Veuillez remplir votre adresse email";
+      } else if (this.emailRegex.test(this.email) === false) {
+        this.error = "Veuillez écrire une adresse email valide";
+      }
 
-    } else if ((this.pseudoRegex.test(this.name) === true) && (this.pseudoRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
-          fetch("http://localhost:3001/api/auth/signup", {
-          method: "POST",
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-          .then(async response => {
-            if (response.ok) {
-              return response.json()
-            } else {
-              const text = await response.text();
-              throw new Error(text);
-            }
-          })
-          .then(data => {
-            localStorage.setItem('token', data.token);
-            this.$router.push('/home');
-          })
-          .catch(error => {
-            this.errors = error.response.data.errors;
-          });
+      if (this.password === "") {
+        this.error = "Veuillez remplir votre mot de passe";
+      } else if (this.passwordRegex.test(this.password) === false) {
+        this.error = "Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule ainsi qu'un chiffre";
+
+      } else if ((this.pseudoRegex.test(this.name) === true) && (this.pseudoRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
+        signupConnection(data);
+      }
     }
   }
 }
+
+function signupConnection(data) {
+  fetch("http://localhost:3001/api/auth/signup", {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+    .then(async response => {
+      if (response.ok) {
+        const token = await response.json();
+        localStorage.setItem('token', token.token);
+        window.location.href = "http://localhost:3000/home";
+      } else {
+        this.error = "Erreur lors de la création de votre compte";
+      }
+    })
+    .catch(error => console.error(error));
 }
-
-
-
-
-                       
-
-
-
 
 </script>
 
