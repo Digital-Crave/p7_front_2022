@@ -133,6 +133,8 @@ function signupConnection(data) {
   </div>
 </template>
 
-<style>
+<style >
+
 @import url(../../style/signup.css);
+
 </style>

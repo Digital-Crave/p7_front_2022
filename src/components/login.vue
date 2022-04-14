@@ -1,6 +1,5 @@
 <script>
 
-
 export default {
   name: 'login',
   data() {
@@ -19,6 +18,7 @@ export default {
         email: this.email,
         password: this.password
       };
+      
       
       if (this.email === "") {
         this.error = "Veuillez remplir votre adresse email";
@@ -73,7 +73,7 @@ function loginConnection(data) {
       <b-col cols="12" sm="10" md="10" lg="8">
         <h2 class="mb-3">Connectez-vous</h2>
 
-        <!--Formulaire de connexion-->
+        
         <b-row>
           <b-col cols="12" offset-sm="1" sm="10" offset-md="2" md="8" offset-lg="2" lg="8">
             <b-card class="identification-box">
@@ -107,6 +107,8 @@ function loginConnection(data) {
   </b-container>
 </template>
 
-<style type="text/css">
+<style >
+
 @import url(../../style/login.css);
+
 </style>
