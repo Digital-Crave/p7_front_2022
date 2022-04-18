@@ -1,0 +1,40 @@
+#createpost {
+    #floatingTextarea {
+        height: auto;
+    }
+    .btn {
+       margin-top: 2px;
+    }
+    .btn-outline-primary {
+       border-color: transparent;
+       color: #965858;
+    }
+    .btn-outline-primary:hover {
+       background-color: #ffd7d7;
+    }
+    .btn-outline-primary:focus {
+       box-shadow: none;
+    }
+    .btn-secondary {
+       color: #965858;
+       background-color: transparent;
+       border-color: transparent;
+    }
+    .btn-secondary:hover {
+       background-color: #ffd7d7 !important;
+    }
+    .btn-secondary:focus {
+       box-shadow: none;
+    }
+    
+    input {
+       display: none;
+    }
+    label [for="file-input"] {
+       background-color: red;
+    
+    }
+    label {
+       display: inline-block !important;
+    }
+}

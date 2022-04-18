@@ -44,35 +44,6 @@ export default {
 
 <style>
 
-#post .btn-outline-light {
-    color: #965858;
-    border-color: transparent;
-}
+@import url(../../style/post.css);
 
-#post .btn-outline-light:hover {
-    background-color: #ffd7d7;
-}
-
-#post .add_comment {
-    margin-top: 2em;
-}
-
-#post .commentpp {
-    width: 35px !important;
-    height: 35px !important;
-    object-fit: cover;
-    margin-right: 1rem;
-}
-
-#post
-.card {
-    width: 35rem;
-}
-
-#post
-.card-header img {
-    width: 50px !important;
-    height: 50px !important;
-    object-fit: cover;
-}
 </style>

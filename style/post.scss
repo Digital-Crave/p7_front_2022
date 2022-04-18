@@ -1,0 +1,28 @@
+#post {
+    .btn-outline-light {
+        color: #965858;
+        border-color: transparent;
+        }
+        .btn-outline-light:hover {
+        background-color: #ffd7d7;
+        }
+        .add_comment {
+        margin-top: 2em;
+        }
+        .commentpp {
+        width: 35px !important;
+        height: 35px !important;
+        object-fit: cover;
+        margin-right: 1rem;
+        }
+        
+        .card {
+        width: 35rem;
+        }
+        
+        .card-header img {
+        width: 50px !important;
+        height: 50px !important;
+        object-fit: cover;
+        }  
+}

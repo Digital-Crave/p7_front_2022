@@ -35,14 +35,14 @@ label {
   display: -ms-flexbox !important;
   display: flex !important;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .card-body {
   border: 10px solid #ffd7d7;
   -webkit-box-shadow: 1px 1px 9px 1px #ffd7d7;
-  box-shadow: 1px 1px 9px 1px #ffd7d7;
+          box-shadow: 1px 1px 9px 1px #ffd7d7;
 }
 
 .submit-button {
@@ -57,12 +57,12 @@ label {
 
 .btn-secondary:active {
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .btn-secondary:focus {
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .error-message {
@@ -77,13 +77,13 @@ label {
   outline: none !important;
   border: solid 1px #ffd7d7;
   -webkit-box-shadow: 0 0 10px #ffd7d7;
-  box-shadow: 0 0 10px #ffd7d7;
+          box-shadow: 0 0 10px #ffd7d7;
 }
 
 .form-control {
   border: solid 1px #ffd7d7 !important;
   -webkit-box-shadow: 1px 1px 1px 0px #ffd7d7;
-  box-shadow: 1px 1px 1px 0px #ffd7d7;
+          box-shadow: 1px 1px 1px 0px #ffd7d7;
 }
 
 .form-control:focus {
@@ -92,7 +92,7 @@ label {
   border-color: #ffd7d7 !important;
   outline: 0;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 .switch-page {
@@ -145,8 +145,7 @@ label {
 
 @font-face {
   font-family: "poppinsregular";
-  src: url("../assets/fonts/poppins-regular-webfont.woff2") format("woff2"),
-    url("../assets/fonts/poppins-regular-webfont.woff") format("woff");
+  src: url("../assets/fonts/poppins-regular-webfont.woff2") format("woff2"), url("../assets/fonts/poppins-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

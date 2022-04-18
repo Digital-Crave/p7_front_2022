@@ -30,52 +30,6 @@ export default {
 
 <style>
 
-#floatingTextarea {
-    height: auto;
-}
-
-#createpost .btn {
-    margin-top: 2px;
-}
-
-#createpost .btn-outline-primary {
-    border-color: transparent;
-    color: #965858;
-}
-
-#createpost .btn-outline-primary:hover {
-    background-color: #ffd7d7;
-}
-
-#createpost .btn-outline-primary:focus {
-    box-shadow: none;
-}
-
-#createpost .btn-secondary {
-    color: #965858;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-#createpost .btn-secondary:hover {
-    background-color: #ffd7d7 !important;
-}
-
-#createpost .btn-secondary:focus {
-    box-shadow: none;
-}
-
-input {
-    display: none;
-}
-
-#createpost label [for="file-input"] {
-    background-color: red;
-
-}
-
-#createpost label {
-    display: inline-block !important;
-}
+@import url(../../style/createpost.css);
 
 </style>

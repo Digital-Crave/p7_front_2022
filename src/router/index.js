@@ -12,9 +12,29 @@ const routes = [
 
     { path: '/signup', name: 'Signup', component: signup },
 
-    { path: '/profile', name: 'Profile', component: profile }
+    { path: '/profile', name: 'Profile', component: profile },
+
+    { path: '/', redirect: '/home' }
 ]
 
 const router = createRouter({ history: createWebHistory(), routes })
+
+router.beforeEach((to, from, next) => {
+
+    const publicPages = ['/login', '/signup'];
+    const authRequired = !publicPages.includes(to.path);
+    const loggedIn = localStorage.getItem('token');
+
+    if (loggedIn && publicPages.includes(to.path)) {
+        return next('/home');
+    }
+
+    if (authRequired && !loggedIn) {
+        return next('/login');
+    }
+    next();
+});
+
+
 
 export default router

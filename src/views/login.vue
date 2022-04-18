@@ -37,7 +37,6 @@ export default {
   }
 }
 
-
 function loginConnection(data) {
   fetch("http://localhost:3001/api/auth/login", {
     method: "POST",
@@ -58,6 +57,7 @@ function loginConnection(data) {
     })
     .catch(error => console.error(error));
 }
+
 
 </script>
 

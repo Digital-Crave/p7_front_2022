@@ -32,7 +32,7 @@
   outline: none !important;
   border: solid 1px #fd2d01;
   -webkit-box-shadow: 0 0 10px #ffd7d7;
-  box-shadow: 0 0 10px #ffd7d7;
+          box-shadow: 0 0 10px #ffd7d7;
 }
 
 #signup .switch-page {
