@@ -1,14 +1,24 @@
-<template>
-
-</template>
- 
 <script>
+
+import Header from '../components/header.vue';
 
 export default {
   name: "Profile",
+  components: {
+    Header,
+  },
 }
 
 </script>
 
-<style scoped>
+<template>
+
+<Header></Header>
+
+</template>
+
+
+ 
+
+<style>
 </style>

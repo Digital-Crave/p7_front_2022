@@ -2,7 +2,23 @@
 
 export default {
     name: "createpost",
-    }
+    data() {
+        return {
+            image: "",
+            title: "",
+            content: "",
+            user_id: "", 
+        };
+    },
+
+    methods: {
+
+}
+}
+
+
+
+
 
 
 </script>
@@ -17,10 +33,10 @@ export default {
             </div>
 
             <div class="d-flex">
-                <label for="file-input" class="btn btn-secondary">Ajouter une image</label>
+                <label for="file-input" class="btn btn-secondary" @click="sendImage">Ajouter une image</label>
                 <input id="file-input" type="file" />
-                <button type="button" class="btn btn-outline-primary ms-auto">Poster</button>
-            </div>
+                <button type="button" class="btn btn-outline-primary ms-auto" @click="createPost">Poster</button>
+            </div> 
             <hr class="dropdown-divider mt-3" />
             </div>
 </div>
