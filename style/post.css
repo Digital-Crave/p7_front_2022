@@ -8,14 +8,42 @@
 }
 
 #post .add_comment {
-  margin-top: 2em;
+  margin-top: 1em;
+}
+
+#post .btn-primary {
+  color: #965858;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+#post .dropdown-item:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #965858;
+}
+
+#post .dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #965858;
+}
+
+#post .btn-primary:active {
+  box-shadow: 0 0 0 0.15rem #ffd7d7;
+}
+
+#post .btn-primary:focus {
+  box-shadow: 0 0 0 0.15rem #ffd7d7;
+}
+
+#post .btn-group {
+  margin-left: 21rem;
 }
 
 #post .commentpp {
   width: 35px !important;
   height: 35px !important;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 1rem;
 }
 
@@ -27,6 +55,6 @@
   width: 50px !important;
   height: 50px !important;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 /*# sourceMappingURL=post.css.map */

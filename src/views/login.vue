@@ -48,14 +48,21 @@ function loginConnection(data) {
   })
     .then(async response => {
       if (response.ok) {
-        const token = await response.json();
-        localStorage.setItem('token', token.token);
-        window.location.href = "http://localhost:3000/home";
+        return response.json();
       } else {
-        this.error = "Votre adresse email ou votre mot de passe est incorrect";
+        throw new Error("Something went wrong");
       }
     })
-    .catch(error => console.error(error));
+    .then((data) => {
+      const token = JSON.stringify(data.token);
+      const userId = JSON.stringify(data.userId);
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId);
+      window.location.href = "http://localhost:3000/home";
+    })
+    .catch(error => {
+      this.error = error.message;
+    });      
 }
 
 

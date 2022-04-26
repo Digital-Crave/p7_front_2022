@@ -1,5 +1,17 @@
-#createpost #floatingTextarea {
+#createpost .form-control {
   height: auto;
+}
+
+#createpost .rounded {
+  max-height: 10rem;
+  max-width: 8rem;
+}
+#createpost .content {
+  padding-bottom: 3rem;
+}
+
+#createpost .delete {
+  margin-left: 0 !important;
 }
 
 #createpost .btn {
@@ -17,7 +29,7 @@
 
 #createpost .btn-outline-primary:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 #createpost .btn-secondary {
@@ -32,10 +44,10 @@
 
 #createpost .btn-secondary:focus {
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
-#createpost input {
+#createpost .form-control-file {
   display: none;
 }
 

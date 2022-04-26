@@ -1,16 +1,25 @@
 <script>
 
-import Post from '../components/post.vue';
+import Posts from '../components/posts.vue';
 import Header from '../components/header.vue';
 import CreatePost from '../components/createpost.vue';
 
 export default {
     name: "Forum",
     components: {
-        Post,
+        Posts,
         Header,
-        CreatePost
+        CreatePost,
     }, 
+    data() {
+        return {
+            posts: [],
+        }
+    },
+
+    methods: { 
+        
+    }
 }
 
 </script>
@@ -19,10 +28,8 @@ export default {
     <Header></Header>
     <div id="forum">
         <h1>Fil d'actualité</h1>
-          <CreatePost></CreatePost>
-            <Post></Post>
-            <Post></Post>
-            <Post></Post>
+        <CreatePost></CreatePost>
+            <Posts></Posts>
     </div>
 </template>
       

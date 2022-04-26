@@ -2,11 +2,21 @@
   margin-top: 1.5rem;
 }
 
+#comment .commenText {
+  margin-top: -1rem;
+}
+
+#comment .btn-group {
+  margin-left: 25rem !important;
+  margin-right: 5px !important;
+  bottom: 2.7rem !important;
+}
+
 #comment img {
   width: 35px !important;
   height: 35px !important;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 #comment .comment_content {
@@ -16,6 +26,7 @@
   width: 100%;
   padding-left: 1rem;
   padding-top: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 #comment .comment_content p:nth-child(1) {
