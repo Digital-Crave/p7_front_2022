@@ -12,11 +12,12 @@ export default {
             posts: [],
         } 
     },
-    created() {
+    mounted() {
         this.getAllPosts();
     },
 
     methods: {
+
         getAllPosts() {
 
             const token = JSON.parse(localStorage.getItem("token"));
@@ -40,7 +41,6 @@ export default {
                 .then(data => {
                     this.posts = data;
                 })
-
         },
 
         dateFormat(created_at) {
@@ -57,24 +57,15 @@ export default {
     <div id="post">
         <div class="card mb-3 m-auto" v-for="post in posts" :key="post">
             <div class="card-header">
-                <img class="rounded-circle" v-if="post.profil_picture" src="post.profil_picture" alt="Avatar">
+                <img class="rounded-circle" v-if="post.user.profil_picture" :src="post.user.profil_picture" alt="">
                 <strong>{{ post.user.firstname }} {{ post.user.name }} </strong>
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="#">Modifier</a></li>
-                        <li><a class="dropdown-item" href="#">Supprimer</a></li>
-                    </ul>
-                </div>
             </div>
             <img :src="post.image" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 <p class="card-text">{{ post.content }}</p>
                 <p class="card-text"><small class="text-muted">{{ dateFormat(post.created_at) }}</small></p>
-                <Comment :post_id="post.id"/>
+                <Comment :post_id="post.id"></Comment>
             </div>
 
         </div>

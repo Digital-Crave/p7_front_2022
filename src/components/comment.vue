@@ -12,16 +12,17 @@ export default {
             comments: [], 
         }
     },
-    mounted() {
-                this.getComments();
-            },
+    created() {
+        this.getComments();
+    },
     methods : {
 
         createComment() {
 
              if ( this.content === "" ) {
                 this.error = "Veuillez remplir votre commentaire";
-            } else { 
+            }
+            else { 
                    
                 const id = JSON.parse(localStorage.getItem("userId"));
                 const token = JSON.parse(localStorage.getItem("token"))
@@ -42,8 +43,8 @@ export default {
                         },
                         body: JSON.stringify(data),           
                     })
-                    .then(data => {
-                        if (data.ok) {
+                    .then(response => {
+                        if (response.ok) {
                             this.content = "";
                             this.userId = "";
                             this.post_id = "";
@@ -53,10 +54,7 @@ export default {
                         }
                     })
 
-            }
-
-
-           
+            }  
             },   
 
             getComments() {
@@ -116,16 +114,15 @@ export default {
 
 <template>
 <div id="comment">  
-<div class="d-flex" v-for="comment in comments" :key="comment.id">
-    <img src="https://picsum.photos/50" class="card-img-top rounded-circle" alt=".." />
+<div class="d-flex" v-for="comment in comments" :key="comment">
+    <img v-if="comment.user.profil_picture" :src="comment.user.profil_picture" class="card-img-top rounded-circle" alt=".." />
     <div class="d-flex flex-column comment_content">
      <p>{{comment.user.firstname}} {{comment.user.name}}</p> 
      <p class="commenText">{{comment.content}}</p>
     </div>
     </div>
      <div class="add_comment">
-                    <div class="d-flex">
-                        <img src="https://picsum.photos/50" class="card-img-top rounded-circle commentpp" alt=".." />
+                    <div class="d-flex" >
                         <input type="text" contenteditable="true" class="form-control"
                             placeholder="Ajouter un commentaire" v-model="content" id="content" aria-label="Username">
                         <button type="button" class="btn btn-outline-light ml-auto" @click="createComment">Envoyer</button>

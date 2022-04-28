@@ -62,7 +62,7 @@ function loginConnection(data) {
     })
     .catch(error => {
       this.error = error.message;
-    });      
+    });   
 }
 
 

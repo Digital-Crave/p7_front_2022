@@ -11,24 +11,29 @@ export default {
             file : null,
             error: "",
             id : "",
+            isHidden : true,
         };
     },
-    methods: {    
+    methods: {
         createPost() {
 
             const id = JSON.parse(localStorage.getItem("userId"));
             const token = JSON.parse(localStorage.getItem("token"));
 
-            if ( !this.file || !this.title || !this.content ) {
-                 this.error = "Please fill in all fields";
-            } else { 
+            if (this.title === '') {
+                this.error = "Veuillez remplir le titre";
+            }         
+            if (this.content === '') {
+                this.error = "Veuillez remplir le contenu";
+            }       
+            if (this.image != '' && this.title != '' && this.content != '') {
+
                 let formData = new FormData();
                 formData.append("image", this.file);
                 formData.append("title", this.title);
                 formData.append("content", this.content);
                 formData.append("userId", id);
                 formData.append("id", this.id);
-
                 fetch("http://localhost:3001/api/posts",
                     {
                         method: "POST",
@@ -49,10 +54,37 @@ export default {
                             this.error = "Something went wrong";
                         }
                     })
-            } 
-        },
+            } else if ( this.image === '' && this.title != '' && this.content != '') {
+                    
+                let formData = new FormData();
+                formData.append("title", this.title);
+                formData.append("content", this.content);
+                formData.append("userId", id);
+                formData.append("id", this.id);
+                fetch("http://localhost:3001/api/posts",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                        body: formData,           
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            this.title = "";
+                            this.content = "";
+                            this.userId = "";
+                            this.id = "";
+                            window.location.reload();
+                        } else {
+                            this.error = "Something went wrong";
+                        }
+                    })
+            }
+        }, 
         deleteImage() {
             this.newImage = "";
+            this.isHidden = true;
         },
         uploadImage()  {
             this.file = this.$refs.file.files[0];
@@ -88,9 +120,9 @@ export default {
 
             <div class="d-flex">
                 <label for="File" class="btn btn-secondary" >Ajouter une image</label>
-                <button type="button" class="btn btn-outline-primary ms-auto delete" @click="deleteImage">Supprimer l'image</button>
-                <input @change="uploadImage" type="file" ref="file" name="image" class="form-control-file" id="File" accept=".jpg, .jpeg, .gif, .png">
-                <button type="submit" class="btn btn-outline-primary ms-auto" @click="createPost">Poster</button>
+                <button type="button" class="btn btn-outline-primary ms-auto delete" v-if="!isHidden" @click="deleteImage">Supprimer l'image</button>
+                <input v-on:change="uploadImage(), isHidden = false" type="file" ref="file" name="image" class="form-control-file" id="File" accept=".jpg, .jpeg, .gif, .png">
+                <button type="submit" class="btn btn-outline-primary ms-auto" @click="createPost()">Poster</button>
             </div>
             <hr class="dropdown-divider mt-3" />
         </div>
