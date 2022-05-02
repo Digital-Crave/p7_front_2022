@@ -2,31 +2,29 @@
 
 export default {
     name: "Comment",
-    props : {
-        post_id : {
-            type : Number,
-        },
-    },
     data() {
         return {
             comments: [], 
         }
     },
-    created() {
-        this.getComments();
+    props : {
+        post_id : Number
+    },
+    mounted() {
+        console.log("test");
+        this.getCommentsByPostId(this.post_id);
     },
     methods : {
 
-        createComment() {
+       createComment() {
 
-             if ( this.content === "" ) {
+           if ( this.content === "" ) {
                 this.error = "Veuillez remplir votre commentaire";
             }
             else { 
                    
                 const id = JSON.parse(localStorage.getItem("userId"));
                 const token = JSON.parse(localStorage.getItem("token"))
-
                 let data = {
                     content: this.content,
                     userId: id,
@@ -53,9 +51,8 @@ export default {
                             this.error = "Something went wrong";
                         }
                     })
-
             }  
-            },   
+           }, 
 
             getComments() {
 
@@ -81,11 +78,11 @@ export default {
                         this.comments = data;
                     })
             },
-            getCommentsByPostId() {
+            getCommentsByPostId(post_id) {
 
                 const token = JSON.parse(localStorage.getItem("token"));
 
-                fetch("http://localhost:3001/api/comments/:post_id",
+                fetch("http://localhost:3001/api/comments/" + post_id,
                     {
                         method: "GET",
                         headers: {
@@ -108,14 +105,12 @@ export default {
 }
 }
 
-
-
 </script>
 
 <template>
 <div id="comment">  
 <div class="d-flex" v-for="comment in comments" :key="comment">
-    <img v-if="comment.user.profil_picture" :src="comment.user.profil_picture" class="card-img-top rounded-circle" alt=".." />
+    <img v-if="comment.user.profil_picture" :src="comment.user.profil_picture" class="card-img-top rounded-circle" alt="" />
     <div class="d-flex flex-column comment_content">
      <p>{{comment.user.firstname}} {{comment.user.name}}</p> 
      <p class="commenText">{{comment.content}}</p>

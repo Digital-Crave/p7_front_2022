@@ -49,7 +49,7 @@ export default {
                             this.file = null;
                             this.userId = "";
                             this.id = "";
-                            window.location.reload();
+                            this.$emit("function");
                         } else {
                             this.error = "Something went wrong";
                         }
@@ -75,7 +75,7 @@ export default {
                             this.content = "";
                             this.userId = "";
                             this.id = "";
-                            window.location.reload();
+                            this.$emit("function");
                         } else {
                             this.error = "Something went wrong";
                         }
@@ -122,7 +122,7 @@ export default {
                 <label for="File" class="btn btn-secondary" >Ajouter une image</label>
                 <button type="button" class="btn btn-outline-primary ms-auto delete" v-if="!isHidden" @click="deleteImage">Supprimer l'image</button>
                 <input v-on:change="uploadImage(), isHidden = false" type="file" ref="file" name="image" class="form-control-file" id="File" accept=".jpg, .jpeg, .gif, .png">
-                <button type="submit" class="btn btn-outline-primary ms-auto" @click="createPost()">Poster</button>
+                <button type="submit" class="btn btn-outline-primary ms-auto" @click="createPost(), deleteImage()">Poster</button>
             </div>
             <hr class="dropdown-divider mt-3" />
         </div>

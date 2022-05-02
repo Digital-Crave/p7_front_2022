@@ -13,10 +13,34 @@ export default {
     }, 
     data() {
         return {
+            posts: [],
         }
     },
-
+    mounted() {
+        this.getAllPosts();
+    },
     methods: { 
+        getAllPosts() {
+            const token = JSON.parse(localStorage.getItem("token"));
+
+            fetch(`http://localhost:3001/api/posts`,
+                {
+                    method: "GET",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        this.error = "Something went wrong";
+                    }
+                })
+                .then(data => {
+                    this.posts = data;
+                })
+        },
         
     }
 }
@@ -27,8 +51,8 @@ export default {
     <Header></Header>
     <div id="forum">
         <h1>Fil d'actualité</h1>
-        <CreatePost></CreatePost>
-            <Posts></Posts>
+        <CreatePost @function="getAllPosts"></CreatePost>
+        <Posts :data="this.posts"></Posts>
     </div>
 </template>
       

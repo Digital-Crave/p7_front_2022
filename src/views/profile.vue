@@ -70,7 +70,7 @@ export default {
               if (response.ok) {
                 this.user.profil_picture = "";
                 this.file = null;
-                window.location.reload();
+                this.getUser();
               } else {
                 this.error = "Something went wrong";
               }
@@ -126,13 +126,13 @@ export default {
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
                 <span class="avatar mb-3">
-                  <img v-if="user.profil_picture" :src="user.profil_picture" alt="..." class="avatar-img rounded-circle">
+                  <img v-if="user.profil_picture" :src="user.profil_picture" alt="" class="avatar-img rounded-circle">
                 </span>
                 <div class="mt-3">
                   <h4>{{user.firstname}} {{user.name}}</h4>
                   <label for="File" class="btn btn-secondary" >Ajouter une image</label>
                 <button type="button" class="btn btn-outline-primary ms-auto delete" @click="deleteImage">Supprimer l'image</button>
-                <input v-on:change="uploadImage" type="file" ref="file" name="image" class="form-control-file" id="File" accept=".jpg, .jpeg, .gif, .png">
+                <input v-on:change="uploadImage(), updateUser()" type="file" ref="file" name="image" class="form-control-file" id="File" accept=".jpg, .jpeg, .gif, .png">
                 </div>
               </div>
             </div>
@@ -171,7 +171,6 @@ export default {
                   <div class="row">
                     <div class="col-sm-12">
                       <button type="submit" class="btn btn-outline-primary ms-auto" @click="deleteUser()">Supprimer mon compte</button>
-                      <button type="submit" class="btn btn-outline-primary ms-auto" @click="updateUser()">Sauvegarder</button>
                     </div>
                   </div>
                 </div>
@@ -208,6 +207,9 @@ export default {
   border: 1px solid transparent !important;
 }
 
+#profile .avatar-img {
+  max-width: 50%;
+}
 
 #profile .info {
   box-shadow: none;

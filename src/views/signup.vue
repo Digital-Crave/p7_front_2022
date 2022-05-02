@@ -63,7 +63,7 @@ function signupConnection(data) {
     },
     body: JSON.stringify(data)
   })
-    .then(async response => {
+   .then(async response => {
       if (response.ok) {
         const token = await response.json();
         localStorage.setItem('token', token.token);
