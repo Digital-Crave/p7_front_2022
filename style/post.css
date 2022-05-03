@@ -54,7 +54,6 @@
 #post .card-header img {
   width: 50px !important;
   height: 50px !important;
-  -o-object-fit: cover;
   object-fit: cover;
   margin-right: 1rem;
 }

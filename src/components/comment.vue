@@ -5,13 +5,13 @@ export default {
     data() {
         return {
             comments: [], 
+            error: "",
         }
     },
     props : {
         post_id : Number
     },
     mounted() {
-        console.log("test");
         this.getCommentsByPostId(this.post_id);
     },
     methods : {
@@ -44,13 +44,12 @@ export default {
                     .then(response => {
                         if (response.ok) {
                             this.content = "";
-                            this.userId = "";
-                            this.post_id = "";
-                            this.getComments();
+                            this.getCommentsByPostId(this.post_id);
                         } else {
                             this.error = "Something went wrong";
                         }
                     })
+                   
             }  
            }, 
 

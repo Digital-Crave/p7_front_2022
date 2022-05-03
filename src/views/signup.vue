@@ -63,16 +63,19 @@ function signupConnection(data) {
     },
     body: JSON.stringify(data)
   })
-   .then(async response => {
+    .then(async response => {
       if (response.ok) {
-        const token = await response.json();
-        localStorage.setItem('token', token.token);
-        window.location.href = "http://localhost:3000/home";
+        return response.json();
       } else {
-        this.error = "Erreur lors de la création de votre compte";
+        throw new Error("Something went wrong");
       }
     })
-    .catch(error => console.error(error));
+    .then(() => {
+      window.location.href = "http://localhost:3000/login";
+    })
+    .catch(error => {
+      this.error = error.message;
+    });
 }
 
 </script>
