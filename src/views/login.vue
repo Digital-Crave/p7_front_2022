@@ -24,7 +24,7 @@ export default {
         this.error = "Veuillez remplir votre adresse email";
       } else if (this.emailRegex.test(this.email) === false) {
         this.error = "Veuillez écrire une adresse email valide";
-      }
+      } 
       if (this.password === "") {
         this.error = "Veuillez remplir votre mot de passe";
       } else if (this.passwordRegex.test(this.password) === false) {
@@ -56,8 +56,10 @@ function loginConnection(data) {
     .then((data) => {
       const token = JSON.stringify(data.token);
       const userId = JSON.stringify(data.userId);
+      const admin = JSON.stringify(data.admin);
       localStorage.setItem("token", token);
       localStorage.setItem("userId", userId);
+      localStorage.setItem("admin", admin);
       window.location.href = "http://localhost:3000/home";
     })
     .catch(error => {

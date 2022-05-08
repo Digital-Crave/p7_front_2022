@@ -9,9 +9,9 @@ export default {
       email: '',
       password: '',
       error: "",
-      pseudoRegex: /^[a-zA-Z-\s]+$/,
+      nameRegex: /^\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/,
       emailRegex: (/^[A-Za-z0-9+_.-]+@(.+)$/),
-      passwordRegex: /^(?=.*[a-z])(?=.*\d)(?=.{8,})/,
+      passwordRegex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
     };
   },
 
@@ -26,13 +26,13 @@ export default {
 
       if (this.name === "") {
         this.error = "Veuillez remplir votre nom";
-      } else if (this.pseudoRegex.test(this.name) === false) {
+      } else if (this.nameRegex.test(this.name) === false) {
         this.error = "Veuillez écrire un nom valide";
       }
 
       if (this.firstname === "") {
         this.error = "Veuillez remplir votre prénom";
-      } else if (this.pseudoRegex.test(this.firstname) === false) {
+      } else if (this.nameRegex.test(this.firstname) === false) {
         this.error = "Veuillez écrire un prénom valide";
       }
 
@@ -45,9 +45,9 @@ export default {
       if (this.password === "") {
         this.error = "Veuillez remplir votre mot de passe";
       } else if (this.passwordRegex.test(this.password) === false) {
-        this.error = "Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule ainsi qu'un chiffre";
+        this.error = "Veuillez vérifier l'écriture de votre mot de passe, il doit contenir au moins une majuscule, une minuscule, un chiffre ainsi qu'un caractère spécial";
 
-      } else if ((this.pseudoRegex.test(this.name) === true) && (this.pseudoRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
+      } else if ((this.nameRegex.test(this.name) === true) && (this.nameRegex.test(this.firstname) === true) && (this.emailRegex.test(this.email) === true) && (this.passwordRegex.test(this.password) === true)) {
         signupConnection(data);
       }
     }

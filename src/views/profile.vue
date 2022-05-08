@@ -126,7 +126,7 @@ export default {
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
                 <span class="avatar mb-3">
-                  <img v-if="user.profil_picture" :src="user.profil_picture" alt="" class="avatar-img rounded-circle">
+                  <b-img v-bind="mainProps" v-if="user.profil_picture" :src="user.profil_picture" class="avatar2" rounded="circle"  alt="Photo de profil" ></b-img>
                 </span>
                 <div class="mt-3">
                   <h4>{{ user.firstname }} {{ user.name }}</h4>

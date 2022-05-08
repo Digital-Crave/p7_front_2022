@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-  margin-top: -6rem;
+  margin-top: -2rem;
 }
 
 .icon-name {
@@ -105,10 +105,10 @@ label {
     height: auto !important;
   }
   h1 {
-    font-size: 1.2em;
+    font-size: 1.2em !important;
   }
   h2 {
-    font-size: 1.3em;
+    font-size: 1.2em !important;
   }
   .input {
     width: 18em;
@@ -135,9 +135,6 @@ label {
 }
 
 @media screen and (max-width: 440px) {
-  h1 {
-    display: none;
-  }
   .input {
     width: 15em;
   }

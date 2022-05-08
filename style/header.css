@@ -26,6 +26,14 @@
   margin-top: 9px !important;
 }
 
+@media (max-width: 750px) {
+  #header h1 {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 2rem !important;
+  }
+}
+
 #header .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -89,5 +97,11 @@
   color: #fff;
   background-color: #ffc107;
   border-color: #ffc107;
+}
+
+@media (min-width: 510px) and (max-width: 740px) {
+  #header .text-end {
+    margin-left: 1rem;
+  }
 }
 /*# sourceMappingURL=header.css.map */

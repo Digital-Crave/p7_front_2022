@@ -90,8 +90,6 @@ export default {
             this.file = this.$refs.file.files[0];
             this.newImage = URL.createObjectURL(this.file)
         }, 
-
-
     }
 }
 

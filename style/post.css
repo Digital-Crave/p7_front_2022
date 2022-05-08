@@ -35,8 +35,18 @@
   box-shadow: 0 0 0 0.15rem #ffd7d7;
 }
 
-#post .btn-group {
-  margin-left: 21rem;
+#post .btn-secondary:hover {
+  background-color: #565e64 !important;
+}
+
+#post .dropdown-toggle::after {
+  margin-left: 0;
+}
+
+#post .mx-1 {
+  float: inline-end;
+  margin-right: 0 !important;
+  margin-top: 0.3rem;
 }
 
 #post .commentpp {
@@ -48,7 +58,8 @@
 }
 
 #post .card {
-  width: 35rem;
+  width: 95%;
+  max-width: 35rem;
 }
 
 #post .card-header img {

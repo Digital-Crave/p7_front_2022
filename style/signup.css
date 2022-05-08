@@ -1,4 +1,7 @@
 /*signup page */
+#signup {
+  margin-top: -4rem;
+}
 #signup .identification-box {
   background-color: white;
 }
