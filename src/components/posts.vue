@@ -15,7 +15,6 @@ export default {
     data() {
         return {
             admin: 1,
-            isHidden: false,
         }
     },
     methods: {
@@ -24,12 +23,10 @@ export default {
             const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' };
             return date.toLocaleDateString('fr-FR', options);
         },
-        deletePost() {
+        deletePost(id) {
 
             const token = JSON.parse(localStorage.getItem("token"));
             const admin = JSON.parse(localStorage.getItem("admin"));
-            const id = this.data.find(data => data.id ).id;
-
 
             if (admin === 1) {
                 fetch(`http://localhost:3001/api/posts/${id}`,
@@ -47,22 +44,14 @@ export default {
                         }
                     })
                     .then(data => {
-                        window.location.reload();
+                        this.$emit("getposts");
+
                     })
             } else {
                 this.error = "Vous n'avez pas les droits pour supprimer un post";
             }
         },
-        showButton() {
-            const admin = JSON.parse(localStorage.getItem("admin"));
-
-            if (admin === 0) {
-                this.isHidden = false;
-            } else {
-                this.isHidden = true;
-            }
-        },
-}
+    }
 }
 
 </script>
@@ -74,7 +63,7 @@ export default {
                 <img class="rounded-circle" v-if="post.user.profil_picture" :src="post.user.profil_picture" alt="">
                 <strong>{{ post.user.firstname }} {{ post.user.name }} </strong>
                 <b-dropdown class="mx-1" right text="">
-                    <b-dropdown-item @click="deletePost">Supprimer</b-dropdown-item>
+                    <b-dropdown-item @click="deletePost(post.id)">Supprimer</b-dropdown-item>
                 </b-dropdown>
             </div>
             <img :src="post.image" class="card-img-top" alt="">

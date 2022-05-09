@@ -20,18 +20,41 @@
   object-fit: cover;
 }
 
+#comment .d-flex {
+  gap: 0.5rem;
+}
+
 #comment .comment_content {
-  margin-left: 1rem;
   background-color: rgba(0, 0, 0, 0.05);
   border-radius: 5px;
   width: 100%;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
   padding-top: 0.5rem;
   margin-bottom: 2rem;
   gap: 0.5rem;
 }
 
+@media (max-width: 570px) {
+  #comment .comment_content {
+    width: 90%;
+  }
+}
+
 #comment .comment_content p:nth-child(1) {
   font-weight: bold;
+}
+
+#comment .mx-2 {
+  margin-right: 0.5rem;
+  margin-top: -0.5rem !important;
+  margin-left: auto !important;
+}
+
+#comment .dropdown-toggle::after {
+  content: initial;
+}
+
+#comment .btn-group {
+  display: block;
 }
 /*# sourceMappingURL=comment.css.map */

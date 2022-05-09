@@ -6,6 +6,7 @@ export default {
         return {
             comments: [],
             error: "",
+            admin: 0,
         }
     },
     props: {
@@ -101,7 +102,35 @@ export default {
                     this.comments = data;
                 })
         },
-    }
+        deleteComment(comment_id) {
+
+            const token = JSON.parse(localStorage.getItem("token"));
+            const admin = JSON.parse(localStorage.getItem("admin"));
+
+            if (admin === 1) {
+                fetch(`http://localhost:3001/api/comments/${comment_id}`,
+                    {
+                        method: "DELETE",
+                        headers: {
+                            "Authorization": `Bearer ${token}`,
+                        },
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            this.error = "Something went wrong";
+                        }
+                    })
+                    .then(data => {
+                        this.getCommentsByPostId(this.post_id);
+                    })
+            } else {
+                this.error = "Vous n'avez pas les droits pour supprimer un post";
+            }
+
+        },
+    },
 }
 
 </script>
@@ -113,6 +142,9 @@ export default {
                 class="card-img-top rounded-circle" alt="" />
             <div class="d-flex flex-column comment_content">
                 <p>{{ comment.user.firstname }} {{ comment.user.name }}</p>
+                <b-dropdown class="mx-2" right text="">
+                    <b-dropdown-item @click="deleteComment(comment.comment_id)">Supprimer</b-dropdown-item>
+                </b-dropdown>
                 <p class="commenText">{{ comment.content }}</p>
             </div>
         </div>

@@ -51,7 +51,7 @@ export default {
     <div id="forum">
         <h1>Fil d'actualité</h1>
         <CreatePost @function="getAllPosts"></CreatePost>
-        <Posts :data="this.posts" @function="getAllPosts"></Posts>
+        <Posts :data="this.posts" @getposts="getAllPosts"></Posts>
     </div>
 </template>
       
