@@ -44,8 +44,7 @@ export default {
                         }
                     })
                     .then(data => {
-                        this.$emit("getposts");
-
+                       window.location.reload();
                     })
             } else {
                 this.error = "Vous n'avez pas les droits pour supprimer un post";

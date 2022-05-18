@@ -50,8 +50,8 @@ export default {
     <Header></Header>
     <div id="forum">
         <h1>Fil d'actualité</h1>
-        <CreatePost @function="getAllPosts"></CreatePost>
-        <Posts :data="this.posts" @getposts="getAllPosts"></Posts>
+        <CreatePost @getposts="getAllPosts"></CreatePost>
+        <Posts :data="this.posts"></Posts>
     </div>
 </template>
       
